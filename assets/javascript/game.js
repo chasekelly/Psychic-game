@@ -24,13 +24,16 @@ var guessesLeft = function() {
 };
 
 var newGame = function() {
-	guessedLetters = [];
+	guessesSoFar = [];
     left = 9;
     newLetter();
     guessesLeft();
     soFar();
 }
 
+function reset () {
+    guessesSoFar = []
+}
 document.onkeyup = function(event) {
 	var userGuess = event.key;
     left--;
@@ -40,7 +43,8 @@ document.onkeyup = function(event) {
     if (left > 0) {
         if (userGuess == psychicLetter) {
         	wins++;
-        	document.getElementById("wins").innerHTML = "Wins:" + wins;
+            document.getElementById("wins").innerHTML = "Wins:" + wins;
+            alert("You've won!");
             newGame();
         }
     } else if (left == 0) {
